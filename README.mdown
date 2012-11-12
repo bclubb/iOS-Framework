@@ -198,16 +198,8 @@ headers are headers that will be copied to the .framework and can be imported by
 framework. This differs from "project" headers which will *not* be distributed with the framework.
 This distinction is what allows you to have a concept of public and private APIs.
 
-To modify the scope of any header, select the header in the project explorer and then expand the
-Utilities pane
-![](https://github.com/jverkoey/iOS-Framework/raw/master/gfx/utilitiesbutton.png)
-(Cmd+Option+0).
+Go to the “Build Phases” of the the static library target, delete the “Copy Files” phase that’s at the end, and add a “Copy Headers” phase in its place. You should then be able to add the headers to the target and set their visibility.
 
-Look at the "Target Membership" group and ensure that the checkbox next to the .h file is checked.
-Change the scope of the header from "Project" to "Public". This will ensure that the header gets
-copied to the correct location in the copy headers phase.
-
-![](https://github.com/jverkoey/iOS-Framework/raw/master/gfx/publicheaders.png)
 
 ### Step 3: Update the Public Headers Location
 
